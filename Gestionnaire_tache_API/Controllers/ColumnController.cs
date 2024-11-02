@@ -15,10 +15,10 @@ namespace Gestionnaire_tache_API.Controllers
             _columnService = columnService;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<ColumnDto>> Get(int Id)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ColumnDto>> Get(int id)
         {
-            var columnDto = await _columnService.GetAsync(Id);
+            var columnDto = await _columnService.GetAsync(id);
 
             return Ok(columnDto);
         }

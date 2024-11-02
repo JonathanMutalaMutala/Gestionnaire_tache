@@ -1,5 +1,6 @@
 ﻿using Gestionnaire_tache_API.Data;
 using Gestionnaire_tache_API.Model;
+using Gestionnaire_tache_API.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
@@ -18,6 +19,8 @@ namespace Gestionnaire_tache_API.Extensions
             services.AddIdentity<ApplicationUser, IdentityRole>()
                .AddEntityFrameworkStores<GestionnaireDbContext>()
                .AddDefaultTokenProviders();
+
+            services.AddTransient<IColumnService, ColumnService>(); 
 
             // Auto Mapper
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
