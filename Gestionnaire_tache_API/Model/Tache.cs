@@ -1,8 +1,11 @@
-﻿namespace Gestionnaire_tache_API.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Gestionnaire_tache_API.Model
 {
     public class Tache
     {
-        public int TaskId { get; set; }
+        [Key]
+        public int Id { get; set; }
         public string Title { get; set; }
         public string? Description { get; set; }
         public bool IsCompleted { get; set; }
