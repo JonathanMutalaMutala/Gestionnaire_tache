@@ -16,17 +16,17 @@ namespace Gestionnaire_tache_API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<CreateColumnDto>> Get(int Id)
+        public async Task<ActionResult<ColumnDto>> Get(int Id)
         {
-            var ColumnDto = await _columnService.GetAsync(Id);
+            var columnDto = await _columnService.GetAsync(Id);
 
-            return Ok(ColumnDto);
+            return Ok(columnDto);
         }
 
 
 
         [HttpPost]
-        public async Task<IActionResult> Post(CreateColumnDto createColumnDto)
+        public async Task<IActionResult> Post(ColumnDto createColumnDto)
         {
             var response = await _columnService.CreateAsync(createColumnDto);
             return CreatedAtAction(nameof(Get), new {id = response}); 
