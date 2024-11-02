@@ -2,6 +2,7 @@
 using Gestionnaire_tache_API.Model;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace Gestionnaire_tache_API.Extensions
 {
@@ -18,6 +19,8 @@ namespace Gestionnaire_tache_API.Extensions
                .AddEntityFrameworkStores<GestionnaireDbContext>()
                .AddDefaultTokenProviders();
 
+            // Auto Mapper
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
             return services;    
         }
     }
