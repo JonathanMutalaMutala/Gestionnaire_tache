@@ -6,6 +6,6 @@
         public string Name { get; set; }
         public string? Description { get; set; }
         public int Order { get; set; }
-        public List<Task> Tasks { get; set; } = new List<Task>();
+        public List<Tache> Tasks { get; set; } = new List<Tache>();
     }
 }

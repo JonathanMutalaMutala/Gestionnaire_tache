@@ -1,6 +1,6 @@
 ﻿namespace Gestionnaire_tache_API.Model
 {
-    public class Task
+    public class Tache
     {
         public int TaskId { get; set; }
         public string Title { get; set; }
