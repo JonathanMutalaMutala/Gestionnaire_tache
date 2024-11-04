@@ -15,7 +15,7 @@ namespace Gestionnaire_tache_API.Controllers
             _columnService = columnService;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
         public async Task<ActionResult<ColumnDto>> Get(int id)
         {
             var columnDto = await _columnService.GetAsync(id);
