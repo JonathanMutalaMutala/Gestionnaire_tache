@@ -10,9 +10,13 @@ builder.Services.AddControllers();
 //Permettre à L'API de recevoir d'autre requetes 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("all", builder => builder.AllowAnyOrigin()
-    .AllowAnyHeader()
-    .AllowAnyMethod());
+ 
+    options.AddPolicy("AllowSpecificOrigins", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200") // Ajoutez l'URL de votre front-end Angular
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
 });
 
 
@@ -31,6 +35,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("AllowSpecificOrigins");
 
 app.UseHttpsRedirection();
 
