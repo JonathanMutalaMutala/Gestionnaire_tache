@@ -21,6 +21,7 @@ namespace Gestionnaire_tache_API.Extensions
                .AddDefaultTokenProviders();
 
             services.AddTransient<IColumnService, ColumnService>(); 
+            services.AddTransient<ITacheService, TacheService>();
 
             // Auto Mapper
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
