@@ -16,14 +16,23 @@ namespace Gestionnaire_tache_API.Controllers
         }
 
         [HttpGet]
+        [Route("GetAll")]
+        public async Task<ActionResult<List<ColumnDto>>> GetAll()
+        {
+            return Ok(await _columnService.GetAll());
+        }
+
+        [HttpGet]
+        [Route("GetById")]
         public async Task<ActionResult<ColumnDto>> Get(int id)
         {
-            var columnDto = await _columnService.GetAsync(id);
+            var columnDto = await _columnService.GetByIdAsync(id);
 
             return Ok(columnDto);
         } 
 
         [HttpPost]
+        [Route("Create")]
         public async Task<IActionResult> Post(ColumnDto createColumnDto)
         {
             var response = await _columnService.CreateAsync(createColumnDto);

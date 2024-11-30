@@ -10,8 +10,8 @@ namespace Gestionnaire_tache_API.Services
     public interface IColumnService
     {
         Task<int> CreateAsync(ColumnDto column);
-        Task<ColumnDto> GetAsync(int id);
-
+        Task<ColumnDto> GetByIdAsync(int id);
+        Task<List<ColumnDto>> GetAll(); 
     }
 
 
@@ -38,7 +38,19 @@ namespace Gestionnaire_tache_API.Services
 
         }
 
-        public async Task<ColumnDto> GetAsync(int id)
+        public async Task<List<ColumnDto>> GetAll()
+        {
+           var allColumns = await _gestionnaireDbContext.Columns.ToListAsync();
+
+            if(allColumns == null)
+            {
+                throw new Exception("Not found"); 
+            }
+
+            return _mapper.Map<List<ColumnDto>>(allColumns);
+        }
+
+        public async Task<ColumnDto> GetByIdAsync(int id)
         {
           var currentColumn =  await _gestionnaireDbContext.Columns.FirstOrDefaultAsync(x => x.ColumnId == id);
 
