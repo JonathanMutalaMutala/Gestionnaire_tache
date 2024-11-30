@@ -15,7 +15,7 @@ export class AppComponent {
   ngOnInit(): void {
     this.fetchData();
   }
-
+  items = ['element 1', 'element 2', 'element 3']
 
 
   fetchData(): void {

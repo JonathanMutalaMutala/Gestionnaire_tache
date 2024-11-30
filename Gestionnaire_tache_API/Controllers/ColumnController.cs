@@ -21,9 +21,7 @@ namespace Gestionnaire_tache_API.Controllers
             var columnDto = await _columnService.GetAsync(id);
 
             return Ok(columnDto);
-        }
-
-
+        } 
 
         [HttpPost]
         public async Task<IActionResult> Post(ColumnDto createColumnDto)
