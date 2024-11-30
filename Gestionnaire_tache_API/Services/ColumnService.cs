@@ -40,14 +40,18 @@ namespace Gestionnaire_tache_API.Services
 
         public async Task<List<ColumnDto>> GetAll()
         {
-           var allColumns = await _gestionnaireDbContext.Columns.ToListAsync();
+           var allColumns = await _gestionnaireDbContext.Columns.Include(x => x.Tasks)
+                                                                .ToListAsync();
 
             if(allColumns == null)
             {
                 throw new Exception("Not found"); 
             }
 
-            return _mapper.Map<List<ColumnDto>>(allColumns);
+            var dtoColumn = _mapper.Map<List<ColumnDto>>(allColumns);
+
+
+            return dtoColumn;
         }
 
         public async Task<ColumnDto> GetByIdAsync(int id)
