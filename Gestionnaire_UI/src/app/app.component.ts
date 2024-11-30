@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { GestionnaireTaskServiceService } from './gestionnaire-task-service.service';
+import { ColumnDto } from './column-dto-model';
 
 @Component({
   selector: 'app-root',
@@ -8,21 +9,19 @@ import { GestionnaireTaskServiceService } from './gestionnaire-task-service.serv
 })
 export class AppComponent {
 
-  constructor (private GestionnaireTaskServiceService: GestionnaireTaskServiceService) {
+  constructor (private GestionnaireTaskServiceService: GestionnaireTaskServiceService) {}
 
-  }
+  columns: ColumnDto[] = []
 
-  ngOnInit(): void {
-    this.fetchData();
+  async ngOnInit() {
+    try {
+      this.columns = await this.GestionnaireTaskServiceService.getAllColumn()
+      console.log(this.columns)
+    } catch (error) {
+      console.log(error)
+    }
   }
   items = ['element 1', 'element 2', 'element 3']
-
-
-  fetchData(): void {
-    this.GestionnaireTaskServiceService.getColumnById(1).subscribe((response) => {
-      console.log(response)
-    })
-  }
 
 
   title = 'Gestionnaire_UI';
