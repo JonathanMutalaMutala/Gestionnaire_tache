@@ -6,7 +6,14 @@
         {{column.name}}
       </div>
       <div class="card-body">
-        
+        <div *ngFor="let tache of column.taches" class="card" style="margin-bottom: 20px;">
+          <div class="card-header">
+            {{tache.title}}
+          </div>
+          <div class="card-body">
+            <h3>{{tache.description}}</h3>
+          </div>
+        </div>
       </div>
     </div>
   </div>
